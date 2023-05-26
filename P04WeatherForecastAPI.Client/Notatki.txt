@@ -3,3 +3,7 @@
   - skonfigurowanie DI w app.cs
 
 2) Wdrozenie wzroca MVVM 
+  - stworzenie Viewmodelu, który implementuje  INotifyPropertyChanged
+  - stworzenie pol i wlasciwosci, które bedzeimy bindowac 
+  - pamietac o wywolywaniu propertychange zeby powiadamiac intrefejs 
+  - w widoku (xaml) ustawic bindowanie i powiadac datacontext z viewmodelem 
