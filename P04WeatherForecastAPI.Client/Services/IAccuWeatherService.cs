@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace P04WeatherForecastAPI.Client.Services
 {
-    internal interface IAccuWeatherService
+    public interface IAccuWeatherService
     {
         Task<City[]> GetLocations(string locationName);
         Task<Weather> GetCurrentConditions(string cityKey);

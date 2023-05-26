@@ -1,0 +1,5 @@
+1) Wdrozenie mechanizmu DI 
+  - dodanie intrefejsu do klas
+  - skonfigurowanie DI w app.cs
+
+2) Wdrozenie wzroca MVVM 
