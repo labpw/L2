@@ -14,6 +14,7 @@
     
     <DockPanel>
         <StackPanel Width="150" DockPanel.Dock="Left">
+            <Button Content="Manage Favorite Cities" Command="{Binding OpenFavotireCitiesCommand}" ></Button>
             <Label Content="City:" ></Label>
             <TextBox x:Name="txtCity"></TextBox>
             <Button x:Name="btnSearch" Content="Search" Command="{Binding LoadCitiesCommand}" CommandParameter="{Binding Text, ElementName=txtCity}" ></Button>

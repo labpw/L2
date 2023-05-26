@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using P04WeatherForecastAPI.Client.Commands;
 using P04WeatherForecastAPI.Client.DataSeeders;
 using P04WeatherForecastAPI.Client.Models;
@@ -27,8 +28,11 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 
         //public ICommand LoadCitiesCommand { get;  }
 
-        public MainViewModelV3(IAccuWeatherService accuWeatherService)
+
+        private readonly IServiceProvider _serviceProvider;
+        public MainViewModelV3(IAccuWeatherService accuWeatherService, IServiceProvider serviceProvider)
         {
+            _serviceProvider= serviceProvider; 
             //LoadCitiesCommand = new RelayCommand(x => LoadCities(x as string));
             _accuWeatherService = accuWeatherService;
             Cities = new ObservableCollection<CityViewModel>(); // podejście nr 2 
@@ -79,6 +83,14 @@ namespace P04WeatherForecastAPI.Client.ViewModels
             Cities.Clear();
             foreach (var city in cities) 
                 Cities.Add(new CityViewModel(city));
+        }
+
+        [RelayCommand]
+        public void OpenFavotireCities()
+        {
+            //var favoriteCitiesView = new FavoriteCitiesView();
+            var favoriteCitiesView = _serviceProvider.GetService<FavoriteCitiesView>();
+            favoriteCitiesView.Show();
         }
     }
 }
