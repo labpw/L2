@@ -1,4 +1,5 @@
-﻿using P04WeatherForecastAPI.Client.Models;
+﻿using P04WeatherForecastAPI.Client.DataSeeders;
+using P04WeatherForecastAPI.Client.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,18 +18,9 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 
         public MainViewModel()
         {
-            _weather = new Weather()
-            {
-                Temperature = new Temperature()
-                {
-                    Metric = new Metric()
-                    {
-                        Value = 20,
-                    }
-                }
-            };
-
-            SelectedCity = new City() { LocalizedName = "Warszawa" };
+            _weather = MainViewDataseeder.GenerateWeather;
+            _selectedCity = MainViewDataseeder.GenerateSelectedCity;
+            _cities = MainViewDataseeder.GenerateCities;
         }
 
 
