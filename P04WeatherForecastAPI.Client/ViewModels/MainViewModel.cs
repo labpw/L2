@@ -50,6 +50,15 @@ namespace P04WeatherForecastAPI.Client.ViewModels
             {
                 _selectedCity = value;
                 OnPropertyChanged();
+                LoadWeather();
+            }
+        }
+
+        private async void LoadWeather()
+        {
+            if(SelectedCity != null)
+            {
+                Weather= await _accuWeatherService.GetCurrentConditions(SelectedCity.Key);
             }
         }
 
