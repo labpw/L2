@@ -17,5 +17,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+      
     }
 }

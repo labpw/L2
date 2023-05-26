@@ -18,7 +18,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 {
     //CommunityToolkit.Mvvm
     // kazada klasa, ktora dziedziczy po ObservableObject musi byc partial 
-    public partial class MainViewModelV3 : BaseViewModel
+    public partial class MainViewModelV3 : ObservableObject
     {
         private CityViewModel _selectedCity;
         private Weather _weather;
@@ -32,12 +32,10 @@ namespace P04WeatherForecastAPI.Client.ViewModels
             //LoadCitiesCommand = new RelayCommand(x => LoadCities(x as string));
             _accuWeatherService = accuWeatherService;
             Cities = new ObservableCollection<CityViewModel>(); // podejście nr 2 
-
-         
         }
 
-        [ObservableProperty]
-        private WeatherViewModel weatherView;
+        //[ObservableProperty]
+        //private WeatherViewModel weatherView;
         //public WeatherViewModel WeatherView { 
         //    get { return weatherView; } 
         //    set { 
@@ -45,6 +43,8 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         //        OnPropertyChanged();
         //    }
         //}
+        [ObservableProperty]
+        private WeatherViewModel weatherView;
 
 
         public CityViewModel SelectedCity
