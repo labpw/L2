@@ -19,6 +19,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         private CityViewModel _selectedCity;
         private Weather _weather;
         private readonly IAccuWeatherService _accuWeatherService;
+        private WeatherViewModel weatherView;
 
         public ICommand LoadCitiesCommand { get;  }
 
@@ -34,18 +35,28 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         }
 
 
-        private Weather Weather
-        {
-            get { return _weather; }
+        //private Weather Weather
+        //{
+        //    get { return _weather; }
+        //    set { 
+        //        _weather = value;
+        //        //OnPropertyChanged("Weather");
+        //        //OnPropertyChanged();
+        //      //  OnPropertyChanged("CurrentTemperature");
+        //    }
+        //}
+
+         
+       // public string CurrentTemperature => Weather?.Temperature.Metric.Value.ToString();
+
+        public WeatherViewModel WeatherView { 
+            get { return weatherView; } 
             set { 
-                _weather = value;
-                //OnPropertyChanged("Weather");
+                weatherView = value;
                 OnPropertyChanged();
-                OnPropertyChanged("CurrentTemperature");
             }
         }
-
-        public string CurrentTemperature => Weather?.Temperature.Metric.Value.ToString();
+        
 
         public CityViewModel SelectedCity
         {
@@ -62,7 +73,9 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         {
             if(SelectedCity != null)
             {
-                Weather= await _accuWeatherService.GetCurrentConditions(SelectedCity.Key);
+                _weather = await _accuWeatherService.GetCurrentConditions(SelectedCity.Key); 
+                WeatherView = new WeatherViewModel(_weather);
+                
             }
         }
 
