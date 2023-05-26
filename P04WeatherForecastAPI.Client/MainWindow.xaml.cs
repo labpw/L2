@@ -25,8 +25,8 @@ namespace P04WeatherForecastAPI.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly MainViewModel _viewModel;
-        public MainWindow(MainViewModel viewModel)
+        private readonly BaseViewModel _viewModel;
+        public MainWindow(BaseViewModel viewModel)
         {
             InitializeComponent();
             _viewModel = viewModel;

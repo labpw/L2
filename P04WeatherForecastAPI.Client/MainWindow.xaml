@@ -17,7 +17,8 @@
             <Label HorizontalAlignment="Center" Content="Temperature for city:"></Label>
             <Label x:Name="lblCityName" HorizontalAlignment="Center" Content="{Binding SelectedCity.LocalizedName}"></Label>
             <Label  HorizontalAlignment="Center" Content="is:"></Label>
-            <Label x:Name="lblTemperatureValue" HorizontalAlignment="Center" Content="{Binding Weather.Temperature.Metric.Value}"></Label>
+            <!--<Label x:Name="lblTemperatureValue" HorizontalAlignment="Center" Content="{Binding Weather.Temperature.Metric.Value}"></Label>-->
+            <Label x:Name="lblTemperatureValue" HorizontalAlignment="Center" Content="{Binding CurrentTemperature}"></Label>
         </StackPanel>
     </DockPanel>
 </Window>

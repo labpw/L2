@@ -14,22 +14,20 @@ using System.Windows.Input;
 
 namespace P04WeatherForecastAPI.Client.ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public class MainViewModelV2 : BaseViewModel
     {
-        // podajście nr 1 do przechowywania kolekcji obiektów:
-        // private City[] _cities;
-
-        private City _selectedCity;
+    
+        private CityViewModel _selectedCity;
         private Weather _weather;
         private readonly IAccuWeatherService _accuWeatherService;
 
         public ICommand LoadCitiesCommand { get;  }
 
-        public MainViewModel(IAccuWeatherService accuWeatherService)
+        public MainViewModelV2(IAccuWeatherService accuWeatherService)
         {
             LoadCitiesCommand = new RelayCommand(x => LoadCities(x as string));
             _accuWeatherService = accuWeatherService;
-            Cities = new ObservableCollection<City>(); // podejście nr 2 
+            Cities = new ObservableCollection<CityViewModel>(); // podejście nr 2 
 
             //_weather = MainViewDataseeder.GenerateWeather;
             //_selectedCity = MainViewDataseeder.GenerateSelectedCity;
@@ -37,7 +35,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         }
 
 
-        public Weather Weather
+        private Weather Weather
         {
             get { return _weather; }
             set { 
@@ -50,7 +48,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 
         public string CurrentTemperature => Weather?.Temperature.Metric.Value.ToString();
 
-        public City SelectedCity
+        public CityViewModel SelectedCity
         {
             get => _selectedCity;
             set
@@ -70,19 +68,10 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         }
 
 
-        // podajście nr 1  do przechowywania kolekcji obiektów:
-        //public City[] Cities
-        //{
-        //    get => _cities;
-        //    set
-        //    {
-        //        _cities = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+ 
 
         // podajście nr 2 do przechowywania kolekcji obiektów:
-        public ObservableCollection<City> Cities { get; set; }
+        public ObservableCollection<CityViewModel> Cities { get; set; }
 
 
         public async void LoadCities(string locationName)
@@ -94,7 +83,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
             var cities = await _accuWeatherService.GetLocations(locationName);
             Cities.Clear();
             foreach (var city in cities) 
-                Cities.Add(city);
+                Cities.Add(new CityViewModel(city));
         }
     }
 }
