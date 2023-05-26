@@ -17,7 +17,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
     public class MainViewModel : BaseViewModel
     {
         // podajście nr 1 do przechowywania kolekcji obiektów:
-        // private City[] _cities;
+        private City[] _cities;
 
         private City _selectedCity;
         private Weather _weather;
@@ -29,7 +29,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         {
             LoadCitiesCommand = new RelayCommand(x => LoadCities(x as string));
             _accuWeatherService = accuWeatherService;
-            Cities = new ObservableCollection<City>(); // podejście nr 2 
+            //Cities = new ObservableCollection<City>(); // podejście nr 2 
 
             //_weather = MainViewDataseeder.GenerateWeather;
             //_selectedCity = MainViewDataseeder.GenerateSelectedCity;
@@ -44,7 +44,8 @@ namespace P04WeatherForecastAPI.Client.ViewModels
                 _weather = value;
                 //OnPropertyChanged("Weather");
                 OnPropertyChanged();
-                OnPropertyChanged("CurrentTemperature");
+                //OnPropertyChanged("CurrentTemperature");
+                OnPropertyChanged(nameof(CurrentTemperature));
             }
         }
 
@@ -71,30 +72,30 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 
 
         // podajście nr 1  do przechowywania kolekcji obiektów:
-        //public City[] Cities
-        //{
-        //    get => _cities;
-        //    set
-        //    {
-        //        _cities = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        public City[] Cities
+        {
+            get => _cities;
+            set
+            {
+                _cities = value;
+                OnPropertyChanged();
+            }
+        }
 
         // podajście nr 2 do przechowywania kolekcji obiektów:
-        public ObservableCollection<City> Cities { get; set; }
+        //public ObservableCollection<City> Cities { get; set; }
 
 
         public async void LoadCities(string locationName)
         {
             // podejście nr 1
-            //Cities= await _accuWeatherService.GetLocations(locationName);
+            Cities= await _accuWeatherService.GetLocations(locationName);
 
             // podejście nr 2:
-            var cities = await _accuWeatherService.GetLocations(locationName);
-            Cities.Clear();
-            foreach (var city in cities) 
-                Cities.Add(city);
+            //var cities = await _accuWeatherService.GetLocations(locationName);
+            //Cities.Clear();
+            //foreach (var city in cities) 
+            //    Cities.Add(city);
         }
     }
 }

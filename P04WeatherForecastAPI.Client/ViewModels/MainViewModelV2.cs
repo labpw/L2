@@ -17,7 +17,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
     public class MainViewModelV2 : BaseViewModel
     {
         private CityViewModel _selectedCity;
-        private Weather _weather;
+       //private Weather _weather;
         private readonly IAccuWeatherService _accuWeatherService;
         private WeatherViewModel weatherView;
 
@@ -73,7 +73,7 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         {
             if(SelectedCity != null)
             {
-                _weather = await _accuWeatherService.GetCurrentConditions(SelectedCity.Key); 
+                Weather  _weather = await _accuWeatherService.GetCurrentConditions(SelectedCity.Key); 
                 WeatherView = new WeatherViewModel(_weather);
                 
             }
