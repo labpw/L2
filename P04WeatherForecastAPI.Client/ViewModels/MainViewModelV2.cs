@@ -67,9 +67,6 @@ namespace P04WeatherForecastAPI.Client.ViewModels
             }
         }
 
-
- 
-
         // podajście nr 2 do przechowywania kolekcji obiektów:
         public ObservableCollection<CityViewModel> Cities { get; set; }
 
