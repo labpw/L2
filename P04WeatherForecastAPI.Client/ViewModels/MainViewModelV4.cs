@@ -28,7 +28,6 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         //public ICommand LoadCitiesCommand { get;  }
 
 
-        private readonly IServiceProvider _serviceProvider;
         public MainViewModelV4(IAccuWeatherService accuWeatherService, FavoriteCityViewModel favoriteCityViewModel, FavoriteCitiesView favoriteCitiesView)
         {
             _favoriteCitiesView = favoriteCitiesView;
