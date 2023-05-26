@@ -16,7 +16,6 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 {
     public class MainViewModelV2 : BaseViewModel
     {
-    
         private CityViewModel _selectedCity;
         private Weather _weather;
         private readonly IAccuWeatherService _accuWeatherService;
@@ -73,9 +72,6 @@ namespace P04WeatherForecastAPI.Client.ViewModels
 
         public async void LoadCities(string locationName)
         {
-            // podejście nr 1
-            //Cities= await _accuWeatherService.GetLocations(locationName);
-
             // podejście nr 2:
             var cities = await _accuWeatherService.GetLocations(locationName);
             Cities.Clear();
