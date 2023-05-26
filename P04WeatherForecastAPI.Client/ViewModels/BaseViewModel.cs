@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace P04WeatherForecastAPI.Client.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public partial class BaseViewModel : ObservableObject, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
