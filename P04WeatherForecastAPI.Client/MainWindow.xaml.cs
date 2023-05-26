@@ -25,14 +25,16 @@ namespace P04WeatherForecastAPI.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly MainViewModelV3 _viewModel;
-        public MainWindow(MainViewModelV3 viewModel)
+        private readonly MainViewModelV4 _viewModel;
+        public MainWindow(MainViewModelV4 viewModel)
         {
             InitializeComponent();
             _viewModel = viewModel;
             DataContext = _viewModel;
             //accuWeatherService = new AccuWeatherService();
         }
+
+        
 
 
 

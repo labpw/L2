@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace P04WeatherForecastAPI.Client.Services
 {
-    internal interface IFavoriteCityService
+    public interface IFavoriteCityService
     {
         public List<FavoriteCity> GetAllFavoriteCities();
 

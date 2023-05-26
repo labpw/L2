@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:P04WeatherForecastAPI.Client"
         mc:Ignorable="d"
         Title="FavoriteCitiesView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <TextBlock Text="{Binding SelectedCity.Name}"></TextBlock>
 </Window>

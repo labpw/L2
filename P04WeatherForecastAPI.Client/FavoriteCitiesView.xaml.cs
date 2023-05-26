@@ -1,4 +1,6 @@
-﻿using System;
+﻿using P04WeatherForecastAPI.Client.Services;
+using P04WeatherForecastAPI.Client.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +21,9 @@ namespace P04WeatherForecastAPI.Client
     /// </summary>
     public partial class FavoriteCitiesView : Window
     {
-        public FavoriteCitiesView()
+        public FavoriteCitiesView(FavoriteCityViewModel favoriteCityViewModel)
         {
+            DataContext = favoriteCityViewModel;
             InitializeComponent();
         }
     }

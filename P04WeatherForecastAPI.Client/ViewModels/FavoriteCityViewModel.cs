@@ -10,14 +10,16 @@ using System.Threading.Tasks;
 
 namespace P04WeatherForecastAPI.Client.ViewModels
 {
-    internal partial class FavoriteCityViewModel : ObservableObject
+    public partial class FavoriteCityViewModel : ObservableObject
     {
         private readonly IFavoriteCityService _favoriteCityService;
 
         private ObservableCollection<FavoriteCity> _favoriteCity;
 
         [ObservableProperty]
-        private FavoriteCity _selectedCity;
+        private FavoriteCity selectedCity;
+
+
         public FavoriteCityViewModel(IFavoriteCityService favoriteCityService)
         {
             _favoriteCityService = favoriteCityService;

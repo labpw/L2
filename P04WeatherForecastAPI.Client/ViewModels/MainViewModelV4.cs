@@ -17,22 +17,23 @@ using System.Windows.Input;
 
 namespace P04WeatherForecastAPI.Client.ViewModels
 {
-    //CommunityToolkit.Mvvm
-    // kazada klasa, ktora dziedziczy po ObservableObject musi byc partial 
-    public partial class MainViewModelV3 : ObservableObject
+    // przekazywanie wartosci do innego formularza 
+    public partial class MainViewModelV4 : ObservableObject
     {
         private CityViewModel _selectedCity;
         private Weather _weather;
         private readonly IAccuWeatherService _accuWeatherService;
-        
-
+        private readonly FavoriteCitiesView _favoriteCitiesView;
+        private readonly FavoriteCityViewModel _favoriteCityViewModel;
         //public ICommand LoadCitiesCommand { get;  }
 
 
         private readonly IServiceProvider _serviceProvider;
-        public MainViewModelV3(IAccuWeatherService accuWeatherService, IServiceProvider serviceProvider)
+        public MainViewModelV4(IAccuWeatherService accuWeatherService, FavoriteCityViewModel favoriteCityViewModel, FavoriteCitiesView favoriteCitiesView)
         {
-            _serviceProvider= serviceProvider; 
+            _favoriteCitiesView = favoriteCitiesView;
+            _favoriteCityViewModel = favoriteCityViewModel;
+            // _serviceProvider= serviceProvider; 
             //LoadCitiesCommand = new RelayCommand(x => LoadCities(x as string));
             _accuWeatherService = accuWeatherService;
             Cities = new ObservableCollection<CityViewModel>(); // podejście nr 2 
@@ -89,8 +90,8 @@ namespace P04WeatherForecastAPI.Client.ViewModels
         public void OpenFavotireCities()
         {
             //var favoriteCitiesView = new FavoriteCitiesView();
-            var favoriteCitiesView = _serviceProvider.GetService<FavoriteCitiesView>();
-            favoriteCitiesView.Show();
+            _favoriteCityViewModel.SelectedCity = new FavoriteCity() { Name = "Warsaw" };
+            _favoriteCitiesView.Show();
         }
     }
 }

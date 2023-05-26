@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P04WeatherForecastAPI.Client.Models
 {
-    internal class FavoriteCity
+    public class FavoriteCity
     {
         public int Key { get; set; }
         public string Name { get; set; }
